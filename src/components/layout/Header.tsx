@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, Globe } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { MobileNav } from "@/components/layout/MobileNav";
@@ -16,7 +16,7 @@ export function Header() {
   const { t, locale, toggleLocale } = useLanguage();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -44,8 +44,15 @@ export function Header() {
         )}
       >
         <div className="container-custom flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#home" aria-label="Home">
-            <Logo size="md" priority />
+          <a
+            href="#home"
+            aria-label="Home"
+            className={cn(
+              "rounded-xl transition-all",
+              scrolled ? "" : "bg-white/95 px-2 py-1.5 shadow-md",
+            )}
+          >
+            <Logo size="sm" priority />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
@@ -53,7 +60,12 @@ export function Header() {
               <a
                 key={link.key}
                 href={link.href}
-                className="group relative text-sm font-medium text-navy/80 transition-colors hover:text-primary-blue"
+                className={cn(
+                  "group relative text-sm font-medium transition-colors",
+                  scrolled
+                    ? "text-navy/80 hover:text-primary-blue"
+                    : "text-white/90 hover:text-white",
+                )}
               >
                 {navLabels[link.key]}
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary-orange transition-all duration-300 group-hover:w-full" />
@@ -64,20 +76,30 @@ export function Header() {
           <div className="hidden items-center gap-4 lg:flex">
             <button
               onClick={toggleLocale}
-              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-navy/80 transition-colors hover:bg-light-gray hover:text-primary-blue"
+              className={cn(
+                "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                scrolled
+                  ? "text-navy/80 hover:bg-light-gray hover:text-primary-blue"
+                  : "text-white/90 hover:bg-white/10",
+              )}
               aria-label="Toggle language"
             >
               <Globe className="h-4 w-4" />
               {locale === "en" ? "العربية" : "English"}
             </button>
-            <Button href="#contact" size="sm">
+            <Button href="#contact" size="sm" variant={scrolled ? "primary" : "secondary"}>
               {t.nav.requestQuote}
             </Button>
           </div>
 
           <button
             onClick={() => setMobileOpen(true)}
-            className="rounded-lg p-2 text-navy transition-colors hover:bg-light-gray lg:hidden"
+            className={cn(
+              "rounded-lg p-2 transition-colors lg:hidden",
+              scrolled
+                ? "text-navy hover:bg-light-gray"
+                : "text-white hover:bg-white/10",
+            )}
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6" />

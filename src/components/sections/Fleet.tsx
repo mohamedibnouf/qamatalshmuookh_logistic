@@ -6,12 +6,23 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { useLanguage } from "@/context/LanguageProvider";
 
-const fleetKeys = ["flatbed", "box", "trailer", "refrigerated"] as const;
-const fleetImages = [
-  "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80",
-  "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80",
-  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
-  "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
+const fleetItems = [
+  {
+    key: "flatbed" as const,
+    image: "/images/fleet-hq.png",
+  },
+  {
+    key: "box" as const,
+    image: "/images/truck-highway.png",
+  },
+  {
+    key: "trailer" as const,
+    image: "/images/loading-dock.png",
+  },
+  {
+    key: "refrigerated" as const,
+    image: "/images/team-yard.png",
+  },
 ];
 
 export function Fleet() {
@@ -26,30 +37,52 @@ export function Fleet() {
           description={t.fleet.description}
         />
 
+        <FadeIn className="mb-10">
+          <div className="relative h-[320px] overflow-hidden rounded-3xl shadow-[var(--shadow-card)] sm:h-[420px] lg:h-[480px]">
+            <Image
+              src="/images/fleet-hq.png"
+              alt="Qamat Alshmuookh fleet headquarters"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={false}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+            <div className="absolute bottom-0 start-0 end-0 p-8 sm:p-10">
+              <p className="mb-2 text-sm font-medium uppercase tracking-wider text-primary-orange">
+                QAS
+              </p>
+              <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                {t.fleet.title}
+              </h3>
+            </div>
+          </div>
+        </FadeIn>
+
         <div className="grid gap-6 sm:grid-cols-2">
-          {fleetKeys.map((key, i) => {
-            const item = t.fleet.items[key];
+          {fleetItems.map((item, i) => {
+            const content = t.fleet.items[item.key];
             return (
-              <FadeIn key={key} delay={i * 0.1}>
+              <FadeIn key={item.key} delay={i * 0.1}>
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.015 }}
                   className="group overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-soft)]"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden sm:h-72">
                     <Image
-                      src={fleetImages[i]}
-                      alt={item.title}
+                      src={item.image}
+                      alt={content.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/65 to-transparent" />
                     <h3 className="absolute bottom-4 start-4 text-xl font-bold text-white">
-                      {item.title}
+                      {content.title}
                     </h3>
                   </div>
                   <div className="p-6">
-                    <p className="text-muted leading-relaxed">{item.desc}</p>
+                    <p className="text-muted leading-relaxed">{content.desc}</p>
                   </div>
                 </motion.div>
               </FadeIn>
