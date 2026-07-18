@@ -31,12 +31,16 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), var(--font-ibm-plex-arabic), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html[dir="rtl"] body {
@@ -49,11 +53,19 @@ html[dir="rtl"] body {
 }
 
 .section-padding {
-  @apply px-4 py-20 sm:px-6 lg:px-8 lg:py-28;
+  @apply px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-28;
 }
 
 .container-custom {
-  @apply mx-auto max-w-7xl;
+  @apply mx-auto w-full max-w-7xl;
+}
+
+.safe-bottom {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.safe-end {
+  padding-inline-end: max(1rem, env(safe-area-inset-right));
 }
 
 .glass-nav {

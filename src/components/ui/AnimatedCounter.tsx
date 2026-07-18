@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { formatNumber } from "@/lib/utils";
-import { useLanguage } from "@/context/LanguageProvider";
 
 interface AnimatedCounterProps {
   value: number;
@@ -15,7 +14,6 @@ export function AnimatedCounter({ value, suffix = "", duration = 2 }: AnimatedCo
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [count, setCount] = useState(0);
-  const { locale } = useLanguage();
 
   useEffect(() => {
     if (!isInView) return;
@@ -40,7 +38,7 @@ export function AnimatedCounter({ value, suffix = "", duration = 2 }: AnimatedCo
 
   return (
     <motion.span ref={ref} className="tabular-nums">
-      {formatNumber(count, locale)}
+      {formatNumber(count, "ar")}
       {suffix}
     </motion.span>
   );

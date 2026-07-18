@@ -1,3 +1,3 @@
-export type Locale = "en" | "ar";
+export type Locale = "ar";
 
-export type TranslationKey = keyof typeof import("@/lib/translations").translations.en;
+export type TranslationKey = keyof typeof import("@/lib/translations").translations.ar;

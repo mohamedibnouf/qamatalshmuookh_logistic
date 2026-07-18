@@ -6,7 +6,7 @@ import { NAV_LINKS, COMPANY } from "@/lib/constants";
 import { useLanguage } from "@/context/LanguageProvider";
 
 export function Footer() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   const navLabels: Record<string, string> = {
     home: t.nav.home,
@@ -26,8 +26,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border-gray bg-white">
-      <div className="container-custom section-padding !py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container-custom section-padding !py-10 sm:!py-16">
+        <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Logo size="md" />
             <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -96,16 +96,15 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-sm text-muted">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                {locale === "ar" ? COMPANY.locationAr : COMPANY.locationEn}
+                {COMPANY.locationAr}
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border-gray pt-8 sm:flex-row">
-          <p className="text-sm text-muted">
-            © {new Date().getFullYear()}{" "}
-            {locale === "ar" ? COMPANY.nameAr : COMPANY.nameEn}. {t.footer.rights}
+          <p className="text-center text-sm text-muted sm:text-start">
+            © {new Date().getFullYear()} {COMPANY.nameAr}. {t.footer.rights}
           </p>
           <div className="flex gap-4">
             <a
@@ -114,13 +113,13 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-sm text-muted transition-colors hover:text-primary-blue"
             >
-              WhatsApp
+              واتساب
             </a>
             <a
               href={`mailto:${COMPANY.email}`}
               className="text-sm text-muted transition-colors hover:text-primary-blue"
             >
-              Email
+              البريد
             </a>
           </div>
         </div>

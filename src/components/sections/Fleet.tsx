@@ -38,7 +38,7 @@ export function Fleet() {
         />
 
         <FadeIn className="mb-10">
-          <div className="relative h-[320px] overflow-hidden rounded-3xl shadow-[var(--shadow-card)] sm:h-[420px] lg:h-[480px]">
+          <div className="relative h-[220px] overflow-hidden rounded-2xl shadow-[var(--shadow-card)] sm:h-[380px] sm:rounded-3xl lg:h-[480px]">
             <Image
               src="/images/fleet-hq.png"
               alt="Qamat Alshmuookh fleet headquarters"
@@ -48,11 +48,11 @@ export function Fleet() {
               priority={false}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-            <div className="absolute bottom-0 start-0 end-0 p-8 sm:p-10">
-              <p className="mb-2 text-sm font-medium uppercase tracking-wider text-primary-orange">
+            <div className="absolute bottom-0 start-0 end-0 p-5 sm:p-8 lg:p-10">
+              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-primary-orange sm:mb-2 sm:text-sm">
                 QAS
               </p>
-              <h3 className="text-2xl font-bold text-white sm:text-3xl">
+              <h3 className="text-xl font-bold text-white sm:text-2xl lg:text-3xl">
                 {t.fleet.title}
               </h3>
             </div>
@@ -68,7 +68,7 @@ export function Fleet() {
                   whileHover={{ scale: 1.015 }}
                   className="group overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-soft)]"
                 >
-                  <div className="relative h-64 overflow-hidden sm:h-72">
+                  <div className="relative h-52 overflow-hidden sm:h-72">
                     <Image
                       src={item.image}
                       alt={content.title}
@@ -77,12 +77,12 @@ export function Fleet() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/65 to-transparent" />
-                    <h3 className="absolute bottom-4 start-4 text-xl font-bold text-white">
+                    <h3 className="absolute bottom-3 start-3 text-lg font-bold text-white sm:bottom-4 sm:start-4 sm:text-xl">
                       {content.title}
                     </h3>
                   </div>
-                  <div className="p-6">
-                    <p className="text-muted leading-relaxed">{content.desc}</p>
+                  <div className="p-4 sm:p-6">
+                    <p className="text-sm leading-relaxed text-muted sm:text-base">{content.desc}</p>
                   </div>
                 </motion.div>
               </FadeIn>

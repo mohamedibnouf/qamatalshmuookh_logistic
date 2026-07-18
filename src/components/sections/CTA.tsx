@@ -17,7 +17,7 @@ export function CTA() {
         <FadeIn>
           <motion.div
             whileHover={{ scale: 1.005 }}
-            className="relative overflow-hidden rounded-3xl px-8 py-16 text-center text-white shadow-2xl shadow-navy/30 sm:px-16 lg:py-24"
+            className="relative overflow-hidden rounded-2xl px-5 py-12 text-center text-white shadow-2xl shadow-navy/30 sm:rounded-3xl sm:px-16 sm:py-16 lg:py-24"
           >
             <Image
               src="/images/loading-dock.png"
@@ -30,16 +30,16 @@ export function CTA() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/40 via-transparent to-primary-orange/20" />
 
             <div className="relative">
-              <h2 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
+              <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
                 {t.cta.title}
               </h2>
-              <p className="mb-8 text-lg text-white/85">{t.cta.subtitle}</p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <p className="mb-6 text-base text-white/85 sm:mb-8 sm:text-lg">{t.cta.subtitle}</p>
+              <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Button
                   href={COMPANY.tel}
                   variant="secondary"
                   size="lg"
-                  className="!bg-primary-orange !text-white"
+                  className="w-full !bg-primary-orange !text-white sm:w-auto"
                 >
                   <Phone className="h-5 w-5" />
                   {t.cta.callNow}
@@ -48,7 +48,7 @@ export function CTA() {
                   href={COMPANY.whatsapp}
                   variant="outline"
                   size="lg"
-                  className="!border-white !text-white hover:!bg-white hover:!text-primary-blue"
+                  className="w-full !border-white !text-white hover:!bg-white hover:!text-primary-blue sm:w-auto"
                 >
                   <MessageCircle className="h-5 w-5" />
                   {t.cta.whatsapp}

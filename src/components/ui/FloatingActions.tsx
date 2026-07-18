@@ -9,7 +9,13 @@ export function FloatingActions() {
   const { t } = useLanguage();
 
   return (
-    <div className="fixed bottom-6 end-6 z-50 flex flex-col gap-3">
+    <div
+      className="fixed z-50 flex flex-col gap-2.5 sm:gap-3"
+      style={{
+        bottom: "max(1rem, env(safe-area-inset-bottom))",
+        insetInlineEnd: "max(0.75rem, env(safe-area-inset-right))",
+      }}
+    >
       <motion.a
         href={COMPANY.whatsapp}
         target="_blank"
@@ -20,9 +26,9 @@ export function FloatingActions() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label={t.floating.whatsapp}
-        className="group flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-white shadow-lg shadow-[#25D366]/30 transition-shadow hover:shadow-xl"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-3"
       >
-        <MessageCircle className="h-5 w-5" />
+        <MessageCircle className="h-5 w-5 shrink-0" />
         <span className="hidden text-sm font-medium sm:inline">{t.floating.whatsapp}</span>
       </motion.a>
       <motion.a
@@ -33,9 +39,9 @@ export function FloatingActions() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label={t.floating.call}
-        className="group flex items-center gap-2 rounded-full bg-primary-blue px-4 py-3 text-white shadow-lg shadow-primary-blue/30 transition-shadow hover:shadow-xl"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-blue text-white shadow-lg shadow-primary-blue/30 sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-3"
       >
-        <Phone className="h-5 w-5" />
+        <Phone className="h-5 w-5 shrink-0" />
         <span className="hidden text-sm font-medium sm:inline">{t.floating.call}</span>
       </motion.a>
     </div>

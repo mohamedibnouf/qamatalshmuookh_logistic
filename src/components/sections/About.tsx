@@ -11,7 +11,7 @@ const cardIcons = [Shield, Users, Truck, Clock];
 const cardKeys = ["safety", "drivers", "fleet", "delivery"] as const;
 
 export function About() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   const infoItems = [
     { icon: Target, title: t.about.mission, text: t.about.missionText },
@@ -28,13 +28,13 @@ export function About() {
           description={t.about.description}
         />
 
-        <div className="mb-16 grid items-center gap-10 lg:grid-cols-2">
+        <div className="mb-10 grid items-center gap-4 sm:mb-16 sm:gap-6 lg:grid-cols-2 lg:gap-10">
           <FadeIn>
-            <div className="relative overflow-hidden rounded-3xl shadow-[var(--shadow-card)]">
+            <div className="relative overflow-hidden rounded-2xl shadow-[var(--shadow-card)] sm:rounded-3xl">
               <div className="relative aspect-[4/3]">
                 <Image
                   src="/images/meeting.png"
-                  alt={locale === "ar" ? "اجتماع قمة الشموخ" : "Qamat Alshmuookh leadership meeting"}
+                  alt="اجتماع قمة الشموخ"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -45,11 +45,11 @@ export function About() {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="relative overflow-hidden rounded-3xl shadow-[var(--shadow-card)]">
+            <div className="relative overflow-hidden rounded-2xl shadow-[var(--shadow-card)] sm:rounded-3xl">
               <div className="relative aspect-[4/3]">
                 <Image
                   src="/images/team-yard.png"
-                  alt={locale === "ar" ? "فريق قمة الشموخ" : "Qamat Alshmuookh professional team"}
+                  alt="فريق قمة الشموخ"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -60,7 +60,7 @@ export function About() {
           </FadeIn>
         </div>
 
-        <div className="mb-16 grid gap-8 lg:grid-cols-3">
+        <div className="mb-10 grid gap-4 sm:mb-16 sm:gap-8 lg:grid-cols-3">
           {infoItems.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.1}>
               <div className="rounded-2xl bg-white p-8 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-card)]">

@@ -27,7 +27,7 @@ interface FormErrors {
 }
 
 export function Contact() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const [form, setForm] = useState<FormData>({
     name: "",
     company: "",
@@ -62,8 +62,8 @@ export function Contact() {
     { icon: Phone, label: t.contact.phone, value: COMPANY.phoneDisplay, href: COMPANY.tel },
     { icon: MessageCircle, label: t.contact.whatsapp, value: COMPANY.phoneDisplay, href: COMPANY.whatsapp },
     { icon: Mail, label: t.contact.email, value: COMPANY.email, href: `mailto:${COMPANY.email}` },
-    { icon: Clock, label: t.contact.hours, value: locale === "ar" ? COMPANY.workingHoursAr : COMPANY.workingHoursEn },
-    { icon: MapPin, label: t.contact.location, value: locale === "ar" ? COMPANY.locationAr : COMPANY.locationEn },
+    { icon: Clock, label: t.contact.hours, value: COMPANY.workingHoursAr },
+    { icon: MapPin, label: t.contact.location, value: COMPANY.locationAr },
   ];
 
   return (
@@ -77,16 +77,16 @@ export function Contact() {
 
         <div className="grid gap-12 lg:grid-cols-2">
           <FadeIn>
-            <div className="rounded-2xl bg-white p-8 shadow-[var(--shadow-soft)]">
-              <div className="mb-8 flex items-center gap-4">
+            <div className="rounded-2xl bg-white p-5 shadow-[var(--shadow-soft)] sm:p-8">
+              <div className="mb-6 flex flex-col items-start gap-3 sm:mb-8 sm:flex-row sm:items-center sm:gap-4">
                 <Image
                   src="/logo.png"
                   alt="QAS"
                   width={100}
                   height={80}
-                  className="h-16 w-auto object-contain"
+                  className="h-14 w-auto object-contain sm:h-16"
                 />
-                <h3 className="text-lg font-bold text-navy">{t.contact.info}</h3>
+                <h3 className="text-base font-bold text-navy sm:text-lg">{t.contact.info}</h3>
               </div>
               <ul className="space-y-5">
                 {contactItems.map((item) => (
@@ -99,7 +99,7 @@ export function Contact() {
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="font-medium text-navy transition-colors hover:text-primary-blue"
+                          className="break-all font-medium text-navy transition-colors hover:text-primary-blue sm:break-normal"
                         >
                           {item.value}
                         </a>
@@ -123,7 +123,7 @@ export function Contact() {
           <FadeIn delay={0.2}>
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl bg-white p-8 shadow-[var(--shadow-soft)]"
+              className="rounded-2xl bg-white p-5 shadow-[var(--shadow-soft)] sm:p-8"
               noValidate
             >
               {submitted && (

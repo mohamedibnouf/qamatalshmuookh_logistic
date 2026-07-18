@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, Globe } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { MobileNav } from "@/components/layout/MobileNav";
@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { t, locale, toggleLocale } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -43,50 +43,37 @@ export function Header() {
             : "bg-transparent",
         )}
       >
-        <div className="container-custom flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="container-custom flex h-16 items-center justify-between gap-3 px-4 sm:h-20 sm:px-6 lg:px-8">
           <a
             href="#home"
-            aria-label="Home"
+            aria-label="الرئيسية"
             className={cn(
-              "rounded-xl transition-all",
-              scrolled ? "" : "bg-white/95 px-2 py-1.5 shadow-md",
+              "shrink-0 rounded-xl transition-all",
+              scrolled ? "" : "bg-white/95 px-1.5 py-1 shadow-md sm:px-2 sm:py-1.5",
             )}
           >
-            <Logo size="sm" priority />
+            <Logo size="sm" priority className="!h-11 sm:!h-14" />
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex" aria-label="القائمة الرئيسية">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.key}
                 href={link.href}
                 className={cn(
-                  "group relative text-sm font-medium transition-colors",
+                  "group relative whitespace-nowrap text-sm font-medium transition-colors",
                   scrolled
                     ? "text-navy/80 hover:text-primary-blue"
                     : "text-white/90 hover:text-white",
                 )}
               >
                 {navLabels[link.key]}
-                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary-orange transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 right-0 h-0.5 w-0 bg-primary-orange transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <button
-              onClick={toggleLocale}
-              className={cn(
-                "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                scrolled
-                  ? "text-navy/80 hover:bg-light-gray hover:text-primary-blue"
-                  : "text-white/90 hover:bg-white/10",
-              )}
-              aria-label="Toggle language"
-            >
-              <Globe className="h-4 w-4" />
-              {locale === "en" ? "العربية" : "English"}
-            </button>
+          <div className="hidden items-center lg:flex">
             <Button href="#contact" size="sm" variant={scrolled ? "primary" : "secondary"}>
               {t.nav.requestQuote}
             </Button>
@@ -100,7 +87,7 @@ export function Header() {
                 ? "text-navy hover:bg-light-gray"
                 : "text-white hover:bg-white/10",
             )}
-            aria-label="Open menu"
+            aria-label="فتح القائمة"
           >
             <Menu className="h-6 w-6" />
           </button>

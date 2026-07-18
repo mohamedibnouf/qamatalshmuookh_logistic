@@ -1,63 +1,31 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useMemo } from "react";
 import { getTranslation } from "@/lib/translations";
 import type { Translations } from "@/lib/translations";
-import type { Locale } from "@/types";
 
 interface LanguageContextValue {
-  locale: Locale;
+  locale: "ar";
   t: Translations;
-  dir: "ltr" | "rtl";
-  toggleLocale: () => void;
-  setLocale: (locale: Locale) => void;
+  dir: "rtl";
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    const saved = localStorage.getItem("qas-locale") as Locale | null;
-    if (saved === "en" || saved === "ar") {
-      setLocaleState(saved);
-    }
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    document.documentElement.lang = locale;
-    document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
-    localStorage.setItem("qas-locale", locale);
-  }, [locale, mounted]);
-
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-  }, []);
-
-  const toggleLocale = useCallback(() => {
-    setLocaleState((prev) => (prev === "en" ? "ar" : "en"));
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
+    localStorage.removeItem("qas-locale");
   }, []);
 
   const value = useMemo(
     () => ({
-      locale,
-      t: getTranslation(locale),
-      dir: (locale === "ar" ? "rtl" : "ltr") as "ltr" | "rtl",
-      toggleLocale,
-      setLocale,
+      locale: "ar" as const,
+      t: getTranslation("ar"),
+      dir: "rtl" as const,
     }),
-    [locale, toggleLocale, setLocale],
+    [],
   );
 
   return (

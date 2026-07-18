@@ -30,7 +30,7 @@ export function Testimonials() {
               <Quote className="h-12 w-12 text-primary-orange/30" />
             </div>
 
-            <div className="relative min-h-[200px]">
+            <div className="relative min-h-[220px] sm:min-h-[200px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
@@ -40,7 +40,7 @@ export function Testimonials() {
                   transition={{ duration: 0.5 }}
                   className="text-center"
                 >
-                  <p className="mb-8 text-xl leading-relaxed text-navy/80 italic lg:text-2xl">
+                  <p className="mb-6 px-1 text-base leading-relaxed text-navy/80 italic sm:mb-8 sm:text-xl lg:text-2xl">
                     &ldquo;{items[active].text}&rdquo;
                   </p>
                   <div>

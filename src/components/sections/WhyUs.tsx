@@ -32,7 +32,7 @@ export function WhyUs() {
           description={t.whyUs.description}
         />
 
-        <div className="mb-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mb-12 grid gap-4 sm:mb-20 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {featureKeys.map((key, i) => {
             const Icon = featureIcons[i];
             const feature = t.whyUs.features[key];
@@ -40,7 +40,7 @@ export function WhyUs() {
               <FadeIn key={key} delay={i * 0.06}>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className="flex gap-4 rounded-2xl border border-border-gray p-6 transition-shadow hover:shadow-[var(--shadow-soft)]"
+                  className="flex gap-3 rounded-2xl border border-border-gray p-4 transition-shadow hover:shadow-[var(--shadow-soft)] sm:gap-4 sm:p-6"
                 >
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-blue/10">
                     <Icon className="h-5 w-5 text-primary-blue" />
@@ -55,14 +55,14 @@ export function WhyUs() {
           })}
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
           {STATS.map((stat, i) => (
             <FadeIn key={stat.key} delay={i * 0.1}>
-              <div className="rounded-2xl bg-gradient-to-br from-primary-blue to-primary-blue/90 p-8 text-center text-white shadow-lg shadow-primary-blue/20">
-                <div className="mb-2 text-4xl font-bold lg:text-5xl">
+              <div className="rounded-2xl bg-gradient-to-br from-primary-blue to-primary-blue/90 p-4 text-center text-white shadow-lg shadow-primary-blue/20 sm:p-8">
+                <div className="mb-1 text-2xl font-bold sm:mb-2 sm:text-4xl lg:text-5xl">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm font-medium text-white/80">
+                <p className="text-xs font-medium text-white/80 sm:text-sm">
                   {t.whyUs.stats[statKeys[i]]}
                 </p>
               </div>

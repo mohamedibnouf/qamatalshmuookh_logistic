@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, IBM_Plex_Sans_Arabic } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { COMPANY } from "@/lib/constants";
@@ -17,35 +17,41 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2d3e50",
+};
+
 export const metadata: Metadata = {
-  title: "Qamat Alshmuookh Transportation Company | Premium Logistics Services Saudi Arabia",
+  title: "شركة قمة الشموخ للنقليات | خدمات لوجستية ونقل متميزة في السعودية",
   description:
-    "Professional logistics and transportation company in Saudi Arabia providing reliable cargo transportation, fleet services, and logistics solutions.",
+    "شركة قمة الشموخ للنقليات تقدم خدمات نقل وشحن احترافية في المملكة العربية السعودية بأعلى معايير الجودة والموثوقية.",
   keywords: [
-    "logistics",
-    "transportation",
-    "Saudi Arabia",
-    "cargo",
-    "fleet",
-    "Qamat Alshmuookh",
     "نقليات",
     "شحن",
+    "نقل",
+    "لوجستيات",
+    "قمة الشموخ",
+    "السعودية",
+    "نقل بضائع",
+    "أسطول",
   ],
-  authors: [{ name: COMPANY.nameEn }],
+  authors: [{ name: COMPANY.nameAr }],
   openGraph: {
-    title: "Qamat Alshmuookh Transportation Company",
+    title: "شركة قمة الشموخ للنقليات",
     description:
-      "Professional logistics and transportation company in Saudi Arabia providing reliable cargo transportation, fleet services, and logistics solutions.",
+      "شركة قمة الشموخ للنقليات تقدم خدمات نقل وشحن احترافية في المملكة العربية السعودية بأعلى معايير الجودة والموثوقية.",
     type: "website",
-    locale: "en_SA",
-    alternateLocale: "ar_SA",
-    siteName: COMPANY.nameEn,
+    locale: "ar_SA",
+    siteName: COMPANY.nameAr,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qamat Alshmuookh Transportation Company",
+    title: "شركة قمة الشموخ للنقليات",
     description:
-      "Professional logistics and transportation company in Saudi Arabia providing reliable cargo transportation, fleet services, and logistics solutions.",
+      "شركة قمة الشموخ للنقليات تقدم خدمات نقل وشحن احترافية في المملكة العربية السعودية بأعلى معايير الجودة والموثوقية.",
   },
   robots: { index: true, follow: true },
 };
@@ -53,24 +59,25 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "TransportationService",
-  name: COMPANY.nameEn,
-  alternateName: COMPANY.nameAr,
+  name: COMPANY.nameAr,
+  alternateName: COMPANY.nameEn,
   description:
-    "Professional logistics and transportation company in Saudi Arabia providing reliable cargo transportation, fleet services, and logistics solutions.",
+    "شركة قمة الشموخ للنقليات تقدم خدمات نقل وشحن احترافية في المملكة العربية السعودية.",
   url: "https://qamatalshmuookh.com",
   email: COMPANY.email,
   telephone: COMPANY.phone,
+  inLanguage: "ar",
   areaServed: {
     "@type": "Country",
-    name: "Saudi Arabia",
+    name: "المملكة العربية السعودية",
   },
   serviceType: [
-    "General Cargo Transport",
-    "Heavy Equipment Transport",
-    "Construction Materials Transport",
-    "Commercial Goods Delivery",
-    "Long Distance Transportation",
-    "Fleet Management Solutions",
+    "نقل البضائع العامة",
+    "نقل المعدات الثقيلة",
+    "نقل مواد البناء",
+    "توصيل البضائع التجارية",
+    "النقل لمسافات طويلة",
+    "حلول إدارة الأساطيل",
   ],
 };
 
@@ -80,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

@@ -26,7 +26,11 @@ export function BackToTop() {
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label={t.floating.backToTop}
-          className="fixed bottom-24 end-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white shadow-lg transition-shadow hover:shadow-xl"
+          className="fixed z-50 flex h-11 w-11 items-center justify-center rounded-full bg-navy text-white shadow-lg transition-shadow hover:shadow-xl sm:h-12 sm:w-12"
+          style={{
+            bottom: "calc(max(1rem, env(safe-area-inset-bottom)) + 7.25rem)",
+            insetInlineEnd: "max(0.75rem, env(safe-area-inset-right))",
+          }}
         >
           <ArrowUp className="h-5 w-5" />
         </motion.button>
